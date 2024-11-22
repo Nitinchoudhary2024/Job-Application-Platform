@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Job Application Platform{% endblock %}
+
+{% block content %}
+<h2>Login</h2>
+
+<!-- Display Flash Messages (e.g., invalid credentials) -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<form method="POST">
+    {{ form.hidden_tag() }}  <!-- Hidden tag for CSRF token -->
+    
+    <div>
+        <label for="email">Email:</label>
+        {{ form.email(class="form-input", required=True) }}
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        {{ form.password(class="form-input", required=True) }}
+    </div>
+    
+    <button type="submit">Login</button>
+</form>
+
+{% if session.get('user_id') %}
+    <p>Already logged in? <a href="{{ url_for('logout') }}">Logout</a></p>
+{% endif %}
+
+{% endblock %}

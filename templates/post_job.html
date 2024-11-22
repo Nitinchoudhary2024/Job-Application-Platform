@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Post a Job</h2>
+<form method="POST">
+    <label for="title">Job Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">Job Description:</label>
+    <textarea id="description" name="description" rows="5" required></textarea>
+
+    <button type="submit">Post Job</button>
+</form>
+{% endblock %}

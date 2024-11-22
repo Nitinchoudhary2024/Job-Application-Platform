@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Candidate Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user.name }}</h2>
+<a href="{{ url_for('job_list') }}" class="btn">View Jobs</a>
+<a href="{{ url_for('logout') }}" class="btn">Logout</a>
+{% endblock %}
